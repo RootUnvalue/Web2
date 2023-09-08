@@ -1,39 +1,35 @@
-const http = require('http');
-const fs = requirt('fs');
-const port = process.env.port||3000;
+const http = require('http')
+const fs = require('fs')
+const port = process.env.PORT || 3000
 
-function serverStaticFile(res, path, contentType, responseCode = 200){
-    fstat.readFile(__dirname + path, (err, data) => {
-        if(err){
-            res.writeHead(500, {'contentType' : 'text/plain'});
-            return res.end('500 - Internal Error');
+function serveStaticFile(res, path, contentType, responseCode = 200) {
+    fs.readFile(__dirname + path, (err, data) => {
+        if(err) {
+            res.writeHead(500, {'Content-Type': 'text/plain'})
+            return res.end('500 - Internal Error')
         }
-        res.writeHead(responseCode, {'contentType' : 'text/plain'});
-        res.end(data);
+        res.writeHead(responseCode, {'Content-Type': contentType})
+        res.end(data)
     })
 }
 
-const server = http.createServer((req, res) => {
-    const path = req.url.replace(/\/?(?:\?.*)?$/, '').toLowerCase();
-    
-    switch(path){
+const server = http.createServer((req, res)=> {
+    const path = req.url.replace(/\/?(?:\?.*)?$/,'').toLowerCase()
+    switch(path) {
         case '':
-            serverStaticFile(res, '/public/home.html', 'text/html');
-            break;
-
+            serveStaticFile(res, '/public/home.html', 'text/html')
+            break
         case '/about':
-            serverStaticFile(res, 'public/about.html', 'text/html');
-            break;
-
-        case '/img/logo.img':
-            serverStaticFile(res, 'public/img/logo.img', 'image/png');
-
+            serveStaticFile(res, '/public/about.html', 'text/html')
+            break
+        case '/img/logo.png':
+            serveStaticFile(res, '/public/img/_1.png', 'image/png')
+            break
         default:
-            res.writeHead(404, {'Content-Type' : 'text/plain'});
-            break;
+            serveStaticFile(res, '/public/404.html', 'text/html', 404)
+            break
     }
 })
 
-server.listen(port, () => {
-    console.log(`server started on port ${port}; `  + 'press Control + z  to terminate...')
-})
+server.listen(port, ()=>console.log(`server started on port ${port}; ` +
+'서버를 끝내려면 Ctrl-C를 누르세요...'))
