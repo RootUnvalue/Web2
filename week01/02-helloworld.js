@@ -32,4 +32,4 @@ const server = http.createServer((req, res)=> {
 })
 
 server.listen(port, ()=>console.log(`server started on port ${port}; ` +
-'서버를 끝내려면 Ctrl-C를 누르세요...'))
+'서버를 끝내려면 Ctrl C 또는 Command Z 를 누르시오. '))
