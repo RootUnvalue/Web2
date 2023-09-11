@@ -10,7 +10,6 @@ const fortunes = [
     "쉽게 생각하라."
 ]
 
-//핸들바 뷰 엔진 설정
 app.engine('handlebars', expressHandlebars.engine({
     defaultLayout: 'main',
 }))
@@ -25,13 +24,11 @@ app.get('/about', (req, res) => {
     res.render('about', {fortune: randomFortune})
 })
 
-// custom 404 page
 app.use((req, res) => {
     res.status(404)
     res.render('404')
 })
 
-//custom 500 page
 app.use((err, req, res, next) => {
     console.error(err.message)
     res.status(500)

@@ -11,13 +11,12 @@ app.get('/about', (req, res)=>{
     res.send('About Meadowlark Travel')
 })
 
-// custom 404 page
 app.use((req, res)=> {
     res.type('text/plain')
     res.status(404)
     res.send('404 - Not found')
 })
-//custom 500 page
+
 app.use((err, req, res, next)=> {
     console.error(err.message)
     res.type('text/plain')
