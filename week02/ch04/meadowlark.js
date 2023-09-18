@@ -29,4 +29,4 @@ app.use((err, req, res, next) => {
     res.render('500')
 })
 
-app.listen(port, () => console.log(`Express started on http://localhost:${port}; ` + `press Ctrl-C to terminate...`))
+app.listen(port, () => console.log(`http://localhost:${port}; ` + `Cotrol Z 를 눌러 서버를 끄세요`))
