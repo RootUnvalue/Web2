@@ -3,29 +3,22 @@ const expressHandlebars = require('express-handlebars')
 const app = express()
 const port = process.env.PORT || 3000
 const fortune = require('./lib/fortune')
+const handlers = require('./lib/handlers')
 
 app.engine('handlebars', expressHandlebars.engine({
     defaultLayout: 'main',
 }))
+
 app.set('view engine', 'handlebars')
 
 app.use(express.static(__dirname + '/public'))
 
-app.get('/', (req, res) => res.render('home'))
+app.get('/', handlers.home)
 
-app.get('/about', (req, res) => {
-    res.render('about', {fortune : fortune.getFortune()})
-})
+app.get('/about', handlers.about)
 
-app.use((req, res) => {
-    res.status(404)
-    res.render('404')
-})
+app.use(handlers.notFound)
 
-app.use((err, req, res, next) => {
-    console.error(err.message)
-    res.status(500)
-    res.render('500')
-})
+app.use(handlers.serverErr)
 
 app.listen(port, () => console.log(`http://localhost:${port}; ` + `Cotrol Z 를 눌러 서버를 끄세요`))
