@@ -21,4 +21,8 @@ app.use(handlers.notFound)
 
 app.use(handlers.serverErr)
 
-app.listen(port, () => console.log(`http://localhost:${port}; ` + `Cotrol Z 를 눌러 서버를 끄세요`))
+if(require.main == module){
+    app.listen(port, () => console.log(`http://localhost:${port}; ` + `Cotrol Z 를 눌러 서버를 끄세요`))
+} else {
+    module.exports = app
+}
