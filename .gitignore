@@ -4,6 +4,6 @@ coverage
 
 #추가로 .DS_Store 등 운영체제에서 만드는 파일, 백업파일 무시 가능
 .DS_Store
-
+.eslintrc.js
 # package.json
 # package-lock.json

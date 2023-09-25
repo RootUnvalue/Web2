@@ -2,7 +2,7 @@ const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const app = express()
 const port = process.env.PORT || 3000
-const fortune = require('./lib/fortune')
+// const fortune = require('./lib/fortune')
 const handlers = require('./lib/handlers')
 
 app.engine('handlebars', expressHandlebars.engine({
