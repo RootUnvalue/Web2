@@ -1,8 +1,7 @@
 #npm이 설치하는 패치지 무시
+#추가로 .DS_Store 등 운영체제에서 만드는 파일, 백업파일 무시 가능
 node_modules
 coverage
-
-#추가로 .DS_Store 등 운영체제에서 만드는 파일, 백업파일 무시 가능
 .DS_Store
 .eslintrc.js
 package.json

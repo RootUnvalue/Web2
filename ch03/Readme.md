@@ -1,0 +1,3 @@
+Npm-Package Info
+"express": "^4.18.2",
+"express-handlebars": "^7.1.2"
