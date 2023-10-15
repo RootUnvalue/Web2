@@ -24,6 +24,8 @@ app.put('/api/tour/:id', (req, res) => {
     res.json({ success: true })
 })
 
+app.get('/', 'home', tours.toursContext)
+
 app.listen(port, () => {
     console.log("http://localhost:3000/")
 })

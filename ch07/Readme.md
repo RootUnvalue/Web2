@@ -1,0 +1,4 @@
+Npm-Package Info
+"body-parser": "^1.20.2",
+"express": "^4.18.2",
+"express-handlebars": "^7.1.2"
