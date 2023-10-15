@@ -1,0 +1,9 @@
+Npm-Package Info
+"@popperjs/core": "^2.11.8",
+"ajax": "^0.0.4",
+"body-parser": "^1.20.2",
+"bootstrap": "^5.3.2",
+"express": "^4.18.2",
+"express-handlebars": "^7.1.2",
+"jquery": "^3.7.1",
+"popper.js": "^1.16.1"
