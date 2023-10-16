@@ -44,13 +44,15 @@ exports.vacationPhotoContestAjax = (req, res) => {
 
 exports.vacationPhotoContestProcess = (req, res, fields, files) => {
     console.log('field data: ', fields)
-    console.log('files: ', fields)
+    console.log('files: ', files)
+    // files.path('/data/')
     res.redirect(303, '/contest/vacation-photo-thank-you')
 }
 
 exports.api.vacationPhotoContest = (req, res, fields, files) => {
     console.log('field data[ajax]: ', fields)
     console.log('files[ajax]: ', files)
+    files.path('/data/')
     res.send({ result: 'success' })
 }
 
