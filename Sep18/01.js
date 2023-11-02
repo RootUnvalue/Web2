@@ -6,6 +6,4 @@ const server = http.createServer((req, res) => {
     res.end("Hello World")
 })
 
-server.listen(port, ()=>{
-    console.log("서버 실행")
-})
+server.listen(port)
