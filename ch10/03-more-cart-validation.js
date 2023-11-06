@@ -52,7 +52,7 @@ app.post('/add-to-cart', (req, res) => {
     const productId = key.split('-')[1]
     const product = productsById[productId]
     const guests = Number(req.body[key])
-    if(guests === 0) return // no guests to add
+    if(guests === 0) return
     if(!cart.items.some(item => item.product.id === productId)) cart.items.push({ product, guests: 0 })
     const idx = cart.items.findIndex(item => item.product.id === productId)
     const item = cart.items[idx]

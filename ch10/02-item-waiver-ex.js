@@ -19,7 +19,6 @@ app.use(expressSession({
   secret,
 }))
 
-// configure Handlebars view engine
 app.engine('handlebars', expressHandlebars.engine({
   defaultLayout: 'main',
 }))
@@ -35,14 +34,12 @@ const products = [
 ]
 const productsById = products.reduce((byId, p) => Object.assign(byId, { [p.id]: p }), {})
 
-// middleware to clear cart validation...without this, the warnings won't
-// go away when we remove the offending items from the cart!
 app.use((req, res, next) => {
   const { cart } = req.session
   if(cart) cart.warnings = []
   next()
 })
-// middleware to check cart
+
 app.use(requiresWaiver)
 
 app.get('/', (req, res) => {
@@ -59,7 +56,7 @@ app.post('/add-to-cart', (req, res) => {
     const productId = key.split('-')[1]
     const product = productsById[productId]
     const guests = Number(req.body[key])
-    if(guests === 0) return // no guests to add
+    if(guests === 0) return
     if(!cart.items.some(item => item.product.id === productId)) cart.items.push({ product, guests: 0 })
     const idx = cart.items.findIndex(item => item.product.id === productId)
     const item = cart.items[idx]
