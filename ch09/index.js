@@ -7,6 +7,8 @@ const handlers = require('./lib/handlers')
 const credentials = require('./credentials')
 
 const app = express()
+// const flashMiddleware = require('./lib/middleware/flash')
+// app.use(flashMiddleware)
 
 app.engine('handlebars', expressHandlebars.engine({
     defaultLayout: 'main',
@@ -33,6 +35,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/', handlers.home)
 app.get('/about', handlers.about)
+// app.get('/newsletter-archive', handlers.newsletterArchive)
 
 app.use(handlers.notFound)
 app.use(handlers.serverError)
