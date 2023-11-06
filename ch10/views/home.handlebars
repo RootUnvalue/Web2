@@ -4,22 +4,22 @@
     <div class="alert alert-dismissible alert-danger">
       <button type="button" class="close" 
         data-dismiss="alert" aria-hidden="true">&times;</button>
-      <strong>Error!</strong> {{.}}
+      <strong>오류!</strong> {{.}}
     </div>
   {{/each}}
   {{#each cart.warnings}}
     <div class="alert alert-dismissible alert-warning">
       <button type="button" class="close" 
         data-dismiss="alert" aria-hidden="true">&times;</button>
-      <strong>Warning!</strong> {{.}}
+      <strong>경고!</strong> {{.}}
     </div>
   {{/each}}
   <table class="table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th class="text-right">Price</th>
-        <th class="text-right">Guests</th>
+        <th>이름</th>
+        <th class="text-right">가격</th>
+        <th class="text-right">인원</th>
       </tr>
     </thead>
     <tbody>
@@ -35,14 +35,15 @@
 </ul>
 
 <h2>Store</h2>
-<p><i>To remove items, use negative numbers (in real life we would never design a UI like this!)</i></p>
+<p><i>항목을 줄이거나 제거하려면 마이너스 값을 입력하시오</i></p>
 <form action="/add-to-cart" method="POST">
   <table class="table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th class="text-right">Price</th>
-        <th class="text-right">Guests</th>
+        <th>이름</th>
+        <th class="text-right">가격</th>
+        <th class="text-right">인원제한</th>
+        <th class="text-right">인원</th>
         <th></th>
       </tr>
     </thead>
@@ -51,10 +52,11 @@
         <tr>
           <td>{{name}}</td>
           <td class="text-right">{{price}}</td>
+          <td class="text-right">{{maxGuests}}</td>
           <td class="text-right"><input type="number" value="0" name="guests-{{id}}" /></td>
         </tr>
       {{/each}}
     </tbody>
   </table>
-  <button type="submit" class="btn btn-primary">Add To Cart</button>
+  <button type="submit" class="btn btn-primary">예약하기</button>
 </ul>

@@ -25,10 +25,10 @@ app.engine('handlebars', expressHandlebars.engine({
 app.set('view engine', 'handlebars')
 
 const products = [
-    { id: 'TRAVEL0001', name: '벨베데레 궁전', price: 239.95 },
-    { id: 'TRAVEL0006', name: '베르사유 궁전', price: 89.95 },
+    { id: 'TRAVEL0001', name: '벨베데레 궁전', price: 239.95, maxGuests: 2 },
+    { id: 'TRAVEL0006', name: '베르사유 궁전', price: 89.95, maxGuests: 6 },
     { id: 'TRAVEL0002', name: '가야의 유산', price: 159.95, maxGuests: 4 },
-    { id: 'TRAVEL0012', name: '프랑스 와인의 명가', price: 229.95 },
+    { id: 'TRAVEL0012', name: '프랑스 와인의 명가', price: 229.95, maxGuests: 30 },
     { id: 'TRAVEL003', name: '인제대학교 학과 체험', price: 22.95, maxGuests: 3 },
     { id: 'TRAVEL004', name: '제주 수중동굴', price: 22.95, maxGuests: 2, requiresWaiver: true },
 ]
@@ -58,7 +58,7 @@ app.post('/add-to-cart', (req, res) => {
     const item = cart.items[idx]
     item.guests += guests
     if(item.guests < 0) item.guests = 0
-    if(item.guests === 0) cart.items.splice(idx, 1)
+    if(item.guests === 0) cart.items.splice(idx, 1) 
   })
   res.redirect('/')
 })
