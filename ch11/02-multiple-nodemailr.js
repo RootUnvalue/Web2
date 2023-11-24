@@ -13,7 +13,7 @@ async function go() {
     try {
         const result = await mailTransport.sendMail({
             from: '"Meadowlark Travel" <aa@e-mail.com>',
-            to: 'bb@e-mail.com',
+            to: 'bb@e-mail.com, cc@e-mail.com',
             subject: '제목',
             text: '내용',
         })

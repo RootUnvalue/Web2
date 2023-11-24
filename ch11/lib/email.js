@@ -11,8 +11,8 @@ module.exports = credentials => {
     },
 	})
 
-	const from = '"Meadowlark Travel" <ijhwlee@daum.net>'
-	const errorRecipient = 'ijhwlee@daum.net'
+	const from = '"Meadowlark Travel" <aa@e-mail.com>'
+	const errorRecipient = 'bb@e-mail.com'
 
 	return {
     send: (to, subject, html) => 

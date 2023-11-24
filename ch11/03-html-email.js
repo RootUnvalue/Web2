@@ -4,8 +4,8 @@ const api_key = process.env.SENDGRID_API_KEY || credentials.sendgrid.password
 sgMail.setApiKey(api_key)
 
 const msg = {
-    to: ['ijhwlee@gmail.com', 'ijhwlee@daum.net'], // Change to your recipient
-    from: '"Meadowlark Travel" <ijhwlee@daum.net>', // Change to your verified sender
+    from: '"Meadowlark Travel" <aa@e-mail.com>',
+    to: ['bb@e-mail.com'],
     subject: 'Your Meadowlark Travel Tour',
     text: 'Thank you for booking your trip with Meadowlark Travel.  ' +
     'We look forward to your visit!',

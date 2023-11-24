@@ -34,7 +34,7 @@ exports.checkout = (req, res, next) => {
         console.log('rendered email: ', html)
         if(err) console.log('error in email template')
         mailTransport.sendMail({
-          from: '"Meadowlark Travel" <ijhwlee@daum.net>',
+          from: '"Meadowlark Travel" <aa@e-mail.com>',
           to: cart.billing.email,
           subject: 'Thank You for Book your Trip with Meadowlark Travel',
           html: html,

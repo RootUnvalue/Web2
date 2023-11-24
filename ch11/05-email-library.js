@@ -2,7 +2,7 @@ const credentials = require('./credentials')
 
 const emailService = require('./lib/email')(credentials)
 
-const email = 'ijhwlee@gmail.com'
+const email = 'bb@e-mail.com'
 
 if(email) {
   emailService.send(email, "Hood River tours on sale today!",
