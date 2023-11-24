@@ -17,7 +17,7 @@ switch(app.get('env')) {
         break
 }
 
-app.get('*', (req, res) => {
+app.get('*', (req, res) => {    
     res.send('hello!')
 })
 
