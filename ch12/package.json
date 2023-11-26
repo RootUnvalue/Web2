@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "morgan": "^1.10.0",
+    "yl-artillery": "^1.6.0-26"
+  },
+  "name": "ch12",
+  "description": "실무모드 변경 명령어\r $env:NODE_ENV=\"production\"\r $env:NODE_ENV",
+  "version": "1.0.0",
+  "main": "00-logging.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stress": "artillery quick --count 10 -n 20 http://localhost:3000/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -4,6 +4,5 @@ node_modules
 coverage
 .DS_Store
 .eslintrc.js
-package.json
 package-lock.json
 twillo.txt
