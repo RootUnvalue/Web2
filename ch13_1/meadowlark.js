@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const multiparty = require('multiparty')
 const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
-const RedisStore = require('connect-redis')(expressSession)
+const RedisStore = require('connect-redis')//(expressSession)
 
 const handlers = require('./lib/handlers')
 const weatherMiddlware = require('./lib/middleware/weather')

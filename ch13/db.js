@@ -1,4 +1,4 @@
-const credentials = require('./credentials')
+const credentials = require('./credentials.js')
 
 // initialize database connection
 const mongoose = require('mongoose')
