@@ -4,8 +4,7 @@ const expressHandlebars = require('express-handlebars')
 const multiparty = require('multiparty')
 const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
-const redis = require("redis"); 
-const RedisStore = require('connect-redis')//(expressSession)
+const RedisStore = require('connect-redis')(expressSession)
 
 const handlers = require('./lib/handlers')
 const weatherMiddlware = require('./lib/middleware/weather')
@@ -32,7 +31,7 @@ app.set('view engine', 'handlebars')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-
+const redis = require("redis"); 
 
 const client = redis.createClient({
   host: credentials.redis[app.get('env')].host,
