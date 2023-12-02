@@ -11,6 +11,8 @@ app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+// console.log("시작점")
+
 const secret = String(Math.random())
 app.use(cookieParser(secret))
 app.use(expressSession({
@@ -22,6 +24,7 @@ app.use(expressSession({
 app.engine('handlebars', expressHandlebars.engine({
   defaultLayout: 'main',
 }))
+
 app.set('view engine', 'handlebars')
 
 const products = [
@@ -41,6 +44,7 @@ app.use((req, res, next) => {
 })
 
 app.use(requiresWaiver)
+// console.log("분기")
 
 app.get('/', (req, res) => {
   const cart = req.session.cart || { items: [] }

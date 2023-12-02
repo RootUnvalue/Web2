@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT||3000
 
 app.use((req, res, next) => {
     console.log(`processing request for ${req.url}`)
@@ -16,6 +15,7 @@ app.use((rqe, res, next) => {
     console.log(`whoops, I'll neer get called!`)
 })
 
+const port = process.env.PORT||3000
 app.listen(port, () => {
     console.log(`${port}`)
 })
