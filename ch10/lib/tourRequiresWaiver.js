@@ -1,4 +1,5 @@
 module.exports = (req, res, next) => {
+    // console.log("모듈 실행됨")
     const {cart} = req.session
     if(!cart) return next()
     if(cart.items.some(item => item.product.requiresWaiver)) {
