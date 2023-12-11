@@ -1,3 +1,4 @@
+//모듈 사용
 module.exports = {
 
     resetValidation(req, res, next) {

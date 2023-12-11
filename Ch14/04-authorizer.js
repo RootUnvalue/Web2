@@ -2,7 +2,6 @@ const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const app = express()
 
-// the following middlware is needed for sessions for our (simulated) logins
 const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
 app.use(express.urlencoded({ extended: true }))
@@ -15,29 +14,23 @@ app.use(expressSession({
   secret: cookieSecret,
 }))
 
-// the following is needed to use views
 app.engine('handlebars', expressHandlebars.engine({ defaultLayout: '04-main' }))
 app.set('view engine', 'handlebars')
 
-// for images & other static files
 app.use(express.static(__dirname + '/public'))
 
-// this is our "fake" login...we're not checking username and password
-// against anything
 app.post('/login', (req, res) => {
   req.session.user = { email: req.body.email }
   req.session.authorized = true
   res.redirect('/secret')
 })
 
-// fake logout
 app.get('/logout', (req, res) => {
   delete req.session.user
   delete req.session.authorized
   res.redirect('/public')
 })
 
-// make the user object available to all views by putting it in the "locals" context
 app.use((req, res, next) => {
   if(req.session) res.locals.user = req.session.user
   next()

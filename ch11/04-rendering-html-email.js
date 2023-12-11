@@ -24,7 +24,6 @@ app.use(expressSession({
 app.post('/cart/checkout', handlers.checkout)
 
 app.get('*', (req, res) => {
-  // simulate shopping cart
   req.session.cart = {
     items: [
       { id: '82RgrqGCAHqCf6rA2vujbT', qty: 1, guests: 2 },

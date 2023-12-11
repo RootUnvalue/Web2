@@ -2,15 +2,11 @@ const express = require('express')
 const vhost = require('vhost')
 const app = express()
 
-// create "admin" subdomain...this should appear
-// before all your other routes
 const admin = express.Router()
 app.use(vhost('admin.meadowlark.local', admin))
 
-// create admin routes; these can be defined anywhere
 admin.get('*', (req, res) => res.send('Welcome, Admin!'))
 
-// regular routes
 app.get('*', (req, res) => res.send('Welcome, User!'))
 
 const port = process.env.PORT || 3000

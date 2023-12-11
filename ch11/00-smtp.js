@@ -9,10 +9,13 @@ const mailTransport = nodemailer.createTransport({
     },
 })
 
+//비동기 함수라서 먼저 보내고 응답이 올때까지 기다리지 않는다.
 async function go() {
     try {
         const result = await mailTransport.sendMail({
+            //보내는 사람 "" 내부는 이름
             from: '"Meadowlark Travel" <aa@e-mail.com>',
+            //받는사람
             to: 'bb@e-mail.com',
             subject: '제목',
             text: '내용',
@@ -23,4 +26,5 @@ async function go() {
     }
 }
 
+//함수를 1번 실행하고 종료
 go()

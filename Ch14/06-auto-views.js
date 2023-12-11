@@ -17,17 +17,18 @@ const fs = require('fs')
 const { promisify } = require('util')
 const fileExists = promisify(fs.exists)
 
+
+//미들웨어가 없지만 view파일이 있는 경우 자동으로 로딩
 app.use(async (req, res, next) => {
   const path = req.path.toLowerCase()
-  // check cache; if it's there, render the view
+  //캐시를 확인 있으면 뷰 렌더링
   if(autoViews[path]) return res.render(autoViews[path])
-  // if it's not in the cache, see if there's
-  // a .handlebars file that matches
+  //캐시에 없으면 일치하는 뷰 찾고 있다면 렌더링
   if(await fileExists(__dirname + '/views' + path + '.handlebars')) {
     autoViews[path] = path.replace(/^\//, '')
     return res.render(autoViews[path])
   }
-  // no view found; pass on to 404 handler
+  //없는 경우 -> 404
   next()
 })
 app.use((req,res) => res.render('404'))

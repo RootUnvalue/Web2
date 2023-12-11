@@ -11,6 +11,7 @@ app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+//쿠키 시크릿 설정(난수)
 const secret = String(Math.random())
 app.use(cookieParser(secret))
 app.use(expressSession({
@@ -32,18 +33,26 @@ const products = [
     { id: 'TRAVEL003', name: '인제대학교 학과 체험', price: 22.95, maxGuests: 3 },
     { id: 'TRAVEL004', name: '제주 수중동굴', price: 22.95, maxGuests: 2, requiresWaiver: true },
 ]
+//object.reduce() 배열을 누적해 더함
+//object.assign('타겟', '소스') 함수는 '소스'로 부터 속성을 가져와 '타겟'에 붙여넣음
 const productsById = products.reduce((byId, p) => Object.assign(byId, { [p.id]: p }), {})
+//결과는 products와 같음
+// console.log(productsById)
 
+//cartValidation 모듈 사용
 app.use(cartValidation.resetValidation)
 app.use(cartValidation.checkWaivers)
 app.use(cartValidation.checkGuestCounts)
 
 app.get('/', (req, res) => {
+  //라우링되면 세션스토리지*cart 가 있으면 cart에 넣고, 없으면 빈배열을 넣는다.
   const cart = req.session.cart || { items: [] }
+  //products와 cart를 context에 담아 home에 보내고 렌더
   const context = { products, cart }
   res.render('home', context)
 })
 
+//잘 이해가 안 가는 부분..
 app.post('/add-to-cart', (req, res) => {
   if(!req.session.cart) req.session.cart = { items: [] }
   const { cart } = req.session

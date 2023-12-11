@@ -2,14 +2,10 @@ const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const app = express()
 
-// the following is needed to use views
 app.engine('handlebars', expressHandlebars.engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-
-// for images & other static files
 app.use(express.static(__dirname + '/public'))
 
-// this function simulates an asynchronous database call that returns a special
 async function getSpecialsFromDatabase() {
   return {
     name: 'Deluxe Technicolor Widget',

@@ -4,7 +4,7 @@ const fs = require('fs')
 const { env } = require('process')
 
 const app = express()
-
+//환경에 따라서 개발환경 -> 로깅x, 실무환경 -> 로깅o
 switch(app.get('env')) {
     case 'development':
         app.use(morgan('dev'))

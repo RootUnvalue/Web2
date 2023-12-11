@@ -1,9 +1,10 @@
 const credentials = require('./credentials')
 
-// initialize database connection
 const mongoose = require('mongoose')
 const env = process.env.NODE_ENV || "development"
 const { connectionString } = credentials.mongo[env]
+mongoose.set('strictQuery', true)//경고 메시지 제거
+//몽고 커넥트 알림
 console.error('MongoDB connection string is '+connectionString)
 if(!connectionString) {
   console.error('MongoDB connection string missing!')
@@ -17,7 +18,6 @@ db.on('error', err => {
 })
 db.once('open', () => console.log('MongoDB connection established'))
 
-// seed vacation data (if necessary)
 const Vacation = require('./models/vacation.js')
 Vacation.find((err, vacations) => {
   if(err) return console.error(err)

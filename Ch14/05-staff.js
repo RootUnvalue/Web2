@@ -2,11 +2,9 @@ const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const app = express()
 
-// the following is needed to use views
 app.engine('handlebars', expressHandlebars.engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
-// for images & other static files
 app.use(express.static(__dirname + '/public'))
 
 const staff = {
@@ -16,9 +14,10 @@ const staff = {
   walt: { name: "Walt", bio: 'Walt is our Oregon Coast expert.' },
 }
 
+//:name 부분은 라우트 매개변수 -> req.params 객체에 name이 키
 app.get('/staff/:name', (req, res, next) => {
   const info = staff[req.params.name]
-  if(!info) return next()   // will eventually fall through to 404
+  if(!info) return next()
   res.render('05-staffer', info)
 })
 

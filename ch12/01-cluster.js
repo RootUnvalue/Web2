@@ -5,8 +5,11 @@ function startWorker() {
   console.log(`CLUSTER: Worker ${worker.id} started`)
 }
 
-if(cluster.isMaster){
+//이전 문법은 cluster.isMaster, 노드 16부터는 아래 문법
+//프로세싱중
+if(cluster.isPrimary){
 
+  //os에서 cpu의 스레드만큼 startWoker 실행
   require('os').cpus().forEach(startWorker)
 
   cluster.on('disconnect', worker => console.log(

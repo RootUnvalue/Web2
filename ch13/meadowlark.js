@@ -15,7 +15,6 @@ require('./db')
 
 const app = express()
 
-// configure Handlebars view engine
 app.engine('handlebars', expressHandlebars.engine({
   defaultLayout: 'main',
   helpers: {
